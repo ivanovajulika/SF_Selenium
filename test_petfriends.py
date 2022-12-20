@@ -44,7 +44,7 @@ class TestPets:
             EC.element_to_be_clickable((By.XPATH, "//*[@href='/my_pets']"))
         )
         menu_my_pets.click()
-        browser.implicitly_wait(5)
+        
         assert browser.current_url == "https://petfriends.skillfactory.ru/my_pets"
 
     def test_all_pets_is_present(self, browser):
@@ -59,6 +59,7 @@ class TestPets:
         assert all_my_pets == amount
 
     def test_half_pets_have_photo(self, browser):
+        browser.implicitly_wait(5)
         images = browser.find_elements(By.XPATH, '//th[@scope="row"]/img')
         count = 0
         for i in range(len(images)):
